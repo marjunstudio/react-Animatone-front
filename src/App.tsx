@@ -1,33 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import api from './api';
+import React, { useContext } from 'react';
+import Login from './components/Login';
+import AuthProvider, { AuthContext } from './contexts/AuthContext';
+import Logout from './components/Logout';
 
-const HelloButton: React.FC = () => {
-  const handleClick = async () => {
-    try {
-      const response = await api.get('/');
-      const data = response.data;
-      alert(data.message);
-    } catch (error) {
-      console.error('Error:', error);
-      alert('取得に失敗しました');
-    }
-  };
-
+const App: React.FC = () => {
   return (
-    <button className="bg-red-200" onClick={handleClick}>
-      ボタン
-    </button>
+    <AuthProvider>
+      <Login />
+      <Logout />
+      <AuthConsumer />
+    </AuthProvider>
   );
 };
 
-function App() {
+const AuthConsumer: React.FC = () => {
+  const authContext = useContext(AuthContext);
+
   return (
-    <div className="App">
-      <HelloButton />
+    <div>
+      {authContext?.isLoggedIn ? <div>ログイン済み</div> : <div>未ログイン</div>}
     </div>
   );
-}
+};
 
 export default App;
