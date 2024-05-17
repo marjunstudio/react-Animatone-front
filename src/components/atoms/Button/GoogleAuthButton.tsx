@@ -32,7 +32,8 @@ const GoogleAuthButton: React.FC = () => {
 
   return (
     <div>
-      <SecondaryButton text='ログイン' onClick={signInWithGoogle} />
+      {/* TODO:ここのデザインをよくみるやつに変更する */}
+      <SecondaryButton text='Googleログイン' onClick={signInWithGoogle} />
     </div>
   );
 };
