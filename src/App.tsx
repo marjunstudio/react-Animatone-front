@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
-import Login from './components/Login';
+
 import AuthProvider, { AuthContext } from './contexts/AuthContext';
-import Logout from './components/Logout';
+import Header from './components/organisms/Header';
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <Login />
-      <Logout />
+      <Header />
       <AuthConsumer />
     </AuthProvider>
   );
 };
 
+// TODO:ヘッダーデザイン完成後削除
 const AuthConsumer: React.FC = () => {
   const authContext = useContext(AuthContext);
 

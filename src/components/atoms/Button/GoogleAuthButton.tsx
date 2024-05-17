@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
-import { auth, googleProvider } from '../firebase';
+import { auth, googleProvider } from '../../../firebase';
 import { signInWithPopup } from 'firebase/auth';
-import { AuthContext } from '../contexts/AuthContext';
+import { AuthContext } from '../../../contexts/AuthContext';
 
-const Login: React.FC = () => {
+import SecondaryButton from './SecondaryButton';
+
+const GoogleAuthButton: React.FC = () => {
   const authContext = useContext(AuthContext);
 
   const signInWithGoogle = async () => {
@@ -30,9 +32,9 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
+      <SecondaryButton text='ログイン' onClick={signInWithGoogle} />
     </div>
   );
 };
 
-export default Login;
+export default GoogleAuthButton;
